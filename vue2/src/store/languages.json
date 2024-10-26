@@ -1,0 +1,166 @@
+
+        [{
+            "app_name": "Facts",
+            "name": "English",
+            "code": "en",
+            "rtl": false,
+            "navigation_links": [
+                {
+                    "title": "Add Facts",
+                    "path": "/add_facts-list",
+                    "code": "ADD_FACTS",
+                    "index": 0
+                },
+                {
+                    "title": "Categories",
+                    "path": "/categories-list",
+                    "code": "CATEGORIES",
+                    "index": 1
+                },
+                {
+                    "title": "Facts",
+                    "path": "/facts-list",
+                    "code": "FACTS",
+                    "index": 2
+                }
+            ],
+            "data": {
+                
+                    "add_facts": {
+                        "list_path": [
+                            {
+                                "title": "Dashboard",
+                                "disabled": false,
+                                "path": "/"
+                            },
+                            {
+                                "title": "ADD_FACTS",
+                                "disabled": true,
+                                "path": "/add_facts-list"
+                            }
+                        ],
+                        "edit_path": [
+                            {
+                                "title": "Dashboard",
+                                "disabled": false,
+                                "path": "/"
+                            },
+                            {
+                                "title": "ADD_FACTS",
+                                "disabled": false,
+                                "path": "/Add Facts-list"
+                            },
+                            {
+                                "title": "Edit",
+                                "disabled": true
+                            }
+                        ],
+                        "title": "Add Facts",
+                        "add_btn": "Add Add Facts",
+                        "update_btn": "Update Add Facts",
+                        "delete_btn": "Delete Add Facts",
+                        "edit_btn": "Edit",
+                        "remove_btn": "Remove",
+                        "delete_list_btn": "Delete Selected Add Facts",
+                        "delete_question": "Are You Sure? You Want To Delete This Add Facts",
+                        "yes_btn": "Yes",
+                        "cancel_btn": "Cancel",
+                        
+                        "add_fact_id": "Add Fact Id",
+                        "add_facts_text": "Add Facts Text",
+                        "category_id": "Category Id",
+                        "add_fact_review": "Add Fact Review",
+                        "add_fact_date": "Add Fact Date"
+                    },
+                    "categories": {
+                        "list_path": [
+                            {
+                                "title": "Dashboard",
+                                "disabled": false,
+                                "path": "/"
+                            },
+                            {
+                                "title": "CATEGORIES",
+                                "disabled": true,
+                                "path": "/categories-list"
+                            }
+                        ],
+                        "edit_path": [
+                            {
+                                "title": "Dashboard",
+                                "disabled": false,
+                                "path": "/"
+                            },
+                            {
+                                "title": "CATEGORIES",
+                                "disabled": false,
+                                "path": "/Categories-list"
+                            },
+                            {
+                                "title": "Edit",
+                                "disabled": true
+                            }
+                        ],
+                        "title": "Categories",
+                        "add_btn": "Add Categories",
+                        "update_btn": "Update Categories",
+                        "delete_btn": "Delete Categories",
+                        "edit_btn": "Edit",
+                        "remove_btn": "Remove",
+                        "delete_list_btn": "Delete Selected Categories",
+                        "delete_question": "Are You Sure? You Want To Delete This Categories",
+                        "yes_btn": "Yes",
+                        "cancel_btn": "Cancel",
+                        
+                        "category_id": "Category Id",
+                        "category_title": "Category Title"
+                    },
+                    "facts": {
+                        "list_path": [
+                            {
+                                "title": "Dashboard",
+                                "disabled": false,
+                                "path": "/"
+                            },
+                            {
+                                "title": "FACTS",
+                                "disabled": true,
+                                "path": "/facts-list"
+                            }
+                        ],
+                        "edit_path": [
+                            {
+                                "title": "Dashboard",
+                                "disabled": false,
+                                "path": "/"
+                            },
+                            {
+                                "title": "FACTS",
+                                "disabled": false,
+                                "path": "/Facts-list"
+                            },
+                            {
+                                "title": "Edit",
+                                "disabled": true
+                            }
+                        ],
+                        "title": "Facts",
+                        "add_btn": "Add Facts",
+                        "update_btn": "Update Facts",
+                        "delete_btn": "Delete Facts",
+                        "edit_btn": "Edit",
+                        "remove_btn": "Remove",
+                        "delete_list_btn": "Delete Selected Facts",
+                        "delete_question": "Are You Sure? You Want To Delete This Facts",
+                        "yes_btn": "Yes",
+                        "cancel_btn": "Cancel",
+                        
+                        "fact_id": "Fact Id",
+                        "fact_text": "Fact Text",
+                        "category_id": "Category Id",
+                        "fact_date": "Fact Date"
+                    }
+            }
+        }
+    ]
+        

@@ -1,0 +1,1724 @@
+[
+            {
+                "route_name": "add_facts",
+                "route_url": "/add_facts",
+                "route_key": "add_fact_id",
+                "schema": {
+                    "type": "table",
+                    "properties": [
+                        
+                {
+                    "name": "add_fact_id",
+                    "type": "int",
+                    "primary_key": true
+                },
+                {
+                    "name": "add_facts_text",
+                    "type": "varchar",
+                    "primary_key": false
+                },
+                {
+                    "name": "category_id",
+                    "type": "int",
+                    "primary_key": false
+                },
+                {
+                    "name": "add_fact_review",
+                    "type": "enum",
+                    "primary_key": false
+                },
+                {
+                    "name": "add_fact_date",
+                    "type": "timestamp",
+                    "primary_key": false
+                }
+                    ]
+                },
+                "routes": [{
+                        "route_name": "add_facts_list",
+                        "route_url": "/add_facts/all",
+                        "method": "GET",
+                        "color": "success",
+                        "description": "List all add_facts",
+                        "request": {
+                            "parameters": []
+                        },
+                        "response": [{
+                                "code": 200,
+                                "description": "Successful operation",
+                                "result_type": "code",
+                                "result_code": "{add_fact_id: 1, 'add_facts_text': 'varchar(255)','category_id': 'int(11)','add_fact_review': 'enum('true','false')','add_fact_date': 'timestamp'}"
+                            },
+                            {
+                                "code": 400,
+                                "description": "Bad Request",
+                                "result_type": "message",
+                                "result_code": "SQL Error Message"
+                            },
+                            {
+                                "code": 404,
+                                "description": "Not Found",
+                                "result_type": "message",
+                                "result_code": "Route Not Found"
+                            }
+                        ],
+                        "axios": {
+                            "method": "get",
+                            "url": "/add_facts/all",
+                            "hasData": false,
+                            "data": ""
+                        }
+                    }, {
+                        "route_name": "add_facts_detail",
+                        "route_url": "/add_facts/all/{add_fact_id}",
+                        "method": "GET",
+                        "color": "success",
+                        "description": "Get add_facts detail",
+                        "request": {
+                            "parameters": [{
+                                "name": "add_fact_id",
+                                "type": "integer",
+                                "parameter_type": "path",
+                                "description": "add_facts ID",
+                                "required": true
+                            }]
+                        },
+                        "response": [{
+                                "code": 200,
+                                "description": "Successful operation",
+                                "result_type": "code",
+                                "result_code": "{add_fact_id: 1, 'add_facts_text': 'varchar(255)','category_id': 'int(11)','add_fact_review': 'enum('true','false')','add_fact_date': 'timestamp'}"
+                            },
+                            {
+                                "code": 400,
+                                "description": "Bad Request",
+                                "result_type": "message",
+                                "result_code": "SQL Error Message"
+                            },
+                            {
+                                "code": 401,
+                                "description": "Validation",
+                                "result_type": "message",
+                                "result_code": "Validation Error Message"
+                            },
+                            {
+                                "code": 404,
+                                "description": "Not Found",
+                                "result_type": "message",
+                                "result_code": "Route Not Found"
+                            }
+                        ],
+                        "axios": {
+                            "method": "get",
+                            "url": "/add_facts/all/{add_fact_id}",
+                            "hasData": false,
+                            "data": ""
+                        }
+                    },
+                    {
+                        "route_name": "add_facts_filter",
+                        "route_url": "/add_facts/filter?column={column_name}&value={value}",
+                        "method": "GET",
+                        "color": "success",
+                        "description": "Filter add_facts by single column",
+                        "request": {
+                            "parameters": [
+                                {
+                                    "name": "column_name",
+                                    "type": "string",
+                                    "parameter_type": "query",
+                                    "description": "Column Name",
+                                    "required": true
+                                },
+                                {
+                                    "name": "value",
+                                    "type": "string",
+                                    "parameter_type": "query",
+                                    "description": "Value",
+                                    "required": true
+                                }
+                            ]
+                        },
+                        "response": [{
+                                "code": 200,
+                                "description": "Successful operation",
+                                "result_type": "code",
+                                "result_code": "[{add_fact_id: 1, 'add_facts_text': 'varchar(255)','category_id': 'int(11)','add_fact_review': 'enum('true','false')','add_fact_date': 'timestamp'}]"
+                            },
+                            {
+                                "code": 400,
+                                "description": "Bad Request",
+                                "result_type": "message",
+                                "result_code": "SQL Error Message"
+                            },
+                            {
+                                "code": 401,
+                                "description": "Validation",
+                                "result_type": "message",
+                                "result_code": "Validation Error Message"
+                            },
+                            {
+                                "code": 404,
+                                "description": "Not Found",
+                                "result_type": "message",
+                                "result_code": "Route Not Found"
+                            }
+                        ],
+                        "axios": {
+                            "method": "get",
+                            "url": "/add_facts/filter?column={column_name}&value={value}",
+                            "hasData": false,
+                            "data": ""
+                        }
+                    },
+                    {
+                        "route_name": "add_facts_report",
+                        "route_url": "/add_facts/report?{column_name}={value}",
+                        "method": "GET",
+                        "color": "success",
+                        "description": "Report add_facts by single/multiple column using & operator",
+                        "request": {
+                            "parameters": [{
+                                "name": "column_name",
+                                "type": "string",
+                                "parameter_type": "query",
+                                "description": "Column Name",
+                                "required": false
+                            }]
+                        },
+                        "response": [{
+                                "code": 200,
+                                "description": "Successful operation",
+                                "result_type": "code",
+                                "result_code": "[{add_fact_id: 1, 'add_facts_text': 'varchar(255)','category_id': 'int(11)','add_fact_review': 'enum('true','false')','add_fact_date': 'timestamp'}]"
+                            },
+                            {
+                                "code": 400,
+                                "description": "Bad Request",
+                                "result_type": "message",
+                                "result_code": "SQL Error Message"
+                            },
+                            {
+                                "code": 401,
+                                "description": "Validation",
+                                "result_type": "message",
+                                "result_code": "Validation Error Message"
+                            },
+                            {
+                                "code": 404,
+                                "description": "Not Found",
+                                "result_type": "message",
+                                "result_code": "Route Not Found"
+                            }
+                        ],
+                        "axios": {
+                            "method": "get",
+                            "url": "/add_facts/report?{column_name}={value}",
+                            "hasData": false,
+                            "data": ""
+                        }
+                    },
+                    {
+                        "route_name": "add_facts_create_one",
+                        "route_url": "/add_facts/create",
+                        "method": "POST",
+                        "color": "warning",
+                        "description": "Create one add_facts",
+                        "request": {
+                            "parameters": [
+                                
+                {
+                    "name": "add_fact_id",
+                    "type": "int",
+                    "parameter_type": "form",
+                    "description": "add_facts Name",
+                    "required": true
+                },
+                {
+                    "name": "add_facts_text",
+                    "type": "varchar",
+                    "parameter_type": "form",
+                    "description": "add_facts Name",
+                    "required": true
+                },
+                {
+                    "name": "category_id",
+                    "type": "int",
+                    "parameter_type": "form",
+                    "description": "add_facts Name",
+                    "required": true
+                },
+                {
+                    "name": "add_fact_review",
+                    "type": "enum",
+                    "parameter_type": "form",
+                    "description": "add_facts Name",
+                    "required": true
+                },
+                {
+                    "name": "add_fact_date",
+                    "type": "timestamp",
+                    "parameter_type": "form",
+                    "description": "add_facts Name",
+                    "required": true
+                }
+                            ]
+                        },
+                        "response": [{
+                                "code": 200,
+                                "description": "Successful operation",
+                                "result_type": "code",
+                                "result_code": "{add_fact_id: 1, 'add_facts_text': 'varchar(255)','category_id': 'int(11)','add_fact_review': 'enum('true','false')','add_fact_date': 'timestamp'}"
+                            },
+                            {
+                                "code": 400,
+                                "description": "Bad Request",
+                                "result_type": "message",
+                                "result_code": "SQL Error Message"
+                            },
+                            {
+                                "code": 401,
+                                "description": "Validation",
+                                "result_type": "message",
+                                "result_code": "Validation Error Message"
+                            },
+                            {
+                                "code": 404,
+                                "description": "Not Found",
+                                "result_type": "message",
+                                "result_code": "Route Not Found"
+                            }
+                        ],
+                        "axios": {
+                            "method": "post",
+                            "url": "/add_facts/create",
+                            "hasData": true,
+                            "data": ",{ params : {'add_facts_text': 'varchar(255)','category_id': 'int(11)','add_fact_review': 'enum('true','false')','add_fact_date': 'timestamp'}}"
+                        }
+                    },
+                    {
+                        "route_name": "add_facts_create_list",
+                        "route_url": "/add_facts/create/list",
+                        "method": "POST",
+                        "color": "warning",
+                        "description": "Create multiple add_facts",
+                        "request": {
+                            "parameters": [{
+                                "name": "list",
+                                "type": "array",
+                                "parameter_type": "form",
+                                "description": "add_facts List (JSON) [{'add_facts_text': 'varchar(255)','category_id': 'int(11)','add_fact_review': 'enum('true','false')','add_fact_date': 'timestamp'}]",
+                                "required": true
+                            }]
+                        },
+                        "response": [{
+                                "code": 200,
+                                "description": "Successful operation",
+                                "result_type": "code",
+                                "result_code": "[{add_fact_id: 1, 'add_facts_text': 'varchar(255)','category_id': 'int(11)','add_fact_review': 'enum('true','false')','add_fact_date': 'timestamp'},{add_fact_id: 2, 'add_facts_text': 'varchar(255)','category_id': 'int(11)','add_fact_review': 'enum('true','false')','add_fact_date': 'timestamp'}]"
+                            },
+                            {
+                                "code": 400,
+                                "description": "Bad Request",
+                                "result_type": "message",
+                                "result_code": "SQL Error Message"
+                            },
+                            {
+                                "code": 401,
+                                "description": "Validation",
+                                "result_type": "message",
+                                "result_code": "Validation Error Message"
+                            },
+                            {
+                                "code": 404,
+                                "description": "Not Found",
+                                "result_type": "message",
+                                "result_code": "Route Not Found"
+                            }
+                        ],
+                        "axios": {
+                            "method": "post",
+                            "url": "/add_facts/create/list",
+                            "hasData": true,
+                            "data": ",{ params : {list: [{'add_facts_text': 'varchar(255)','category_id': 'int(11)','add_fact_review': 'enum('true','false')','add_fact_date': 'timestamp'},{'add_facts_text': 'varchar(255)','category_id': 'int(11)','add_fact_review': 'enum('true','false')','add_fact_date': 'timestamp'}]}}"
+                        }
+                    },
+                    {
+                        "route_name": "add_facts_update_by_id",
+                        "route_url": "/add_facts/update/{add_fact_id}",
+                        "method": "PUT",
+                        "color": "info",
+                        "description": "Update add_facts by add_fact_id",
+                        "request": {
+                            "parameters": [
+                                
+                {
+                    "name": "add_fact_id",
+                    "type": "int",
+                    "parameter_type": "form",
+                    "description": "add_facts Name",
+                    "required": true
+                },
+                {
+                    "name": "add_facts_text",
+                    "type": "varchar",
+                    "parameter_type": "form",
+                    "description": "add_facts Name",
+                    "required": true
+                },
+                {
+                    "name": "category_id",
+                    "type": "int",
+                    "parameter_type": "form",
+                    "description": "add_facts Name",
+                    "required": true
+                },
+                {
+                    "name": "add_fact_review",
+                    "type": "enum",
+                    "parameter_type": "form",
+                    "description": "add_facts Name",
+                    "required": true
+                },
+                {
+                    "name": "add_fact_date",
+                    "type": "timestamp",
+                    "parameter_type": "form",
+                    "description": "add_facts Name",
+                    "required": true
+                }
+                            ]
+                        },
+                        "response": [{
+                                "code": 200,
+                                "description": "Successful operation",
+                                "result_type": "code",
+                                "result_code": "{add_fact_id: 1, 'add_facts_text': 'varchar(255)','category_id': 'int(11)','add_fact_review': 'enum('true','false')','add_fact_date': 'timestamp'}"
+                            },
+                            {
+                                "code": 400,
+                                "description": "Bad Request",
+                                "result_type": "message",
+                                "result_code": "SQL Error Message"
+                            },
+                            {
+                                "code": 401,
+                                "description": "Validation",
+                                "result_type": "message",
+                                "result_code": "Validation Error Message"
+                            },
+                            {
+                                "code": 404,
+                                "description": "Not Found",
+                                "result_type": "message",
+                                "result_code": "Route Not Found"
+                            }
+                        ],
+                        "axios": {
+                            "method": "put",
+                            "url": "/add_facts/update/{add_fact_id}",
+                            "hasData": true,
+                            "data": ",{ params : {'add_facts_text': 'varchar(255)','category_id': 'int(11)','add_fact_review': 'enum('true','false')','add_fact_date': 'timestamp'}}"
+                        }
+                    },
+                    {
+                        "route_name": "add_facts_update_by_column",
+                        "route_url": "/add_facts/update?column={column_name}&value={value}",
+                        "method": "PUT",
+                        "color": "info",
+                        "description": "Update add_facts by any column ",
+                        "request": {
+                            "parameters": [
+                                
+                {
+                    "name": "add_fact_id",
+                    "type": "int",
+                    "parameter_type": "form",
+                    "description": "add_facts Name",
+                    "required": true
+                },
+                {
+                    "name": "add_facts_text",
+                    "type": "varchar",
+                    "parameter_type": "form",
+                    "description": "add_facts Name",
+                    "required": true
+                },
+                {
+                    "name": "category_id",
+                    "type": "int",
+                    "parameter_type": "form",
+                    "description": "add_facts Name",
+                    "required": true
+                },
+                {
+                    "name": "add_fact_review",
+                    "type": "enum",
+                    "parameter_type": "form",
+                    "description": "add_facts Name",
+                    "required": true
+                },
+                {
+                    "name": "add_fact_date",
+                    "type": "timestamp",
+                    "parameter_type": "form",
+                    "description": "add_facts Name",
+                    "required": true
+                },
+                                {
+                                    "name": "column",
+                                    "type": "string",
+                                    "parameter_type": "query",
+                                    "description": "Column Name",
+                                    "required": true
+                                },
+                                {
+                                    "name": "value",
+                                    "type": "string",
+                                    "parameter_type": "query",
+                                    "description": "Value",
+                                    "required": true
+                                }
+                            ]
+                        },
+                        "response": [{
+                                "code": 200,
+                                "description": "Successful operation",
+                                "result_type": "code",
+                                "result_code": "{add_fact_id: 1, 'add_facts_text': 'varchar(255)','category_id': 'int(11)','add_fact_review': 'enum('true','false')','add_fact_date': 'timestamp'}"
+                            },
+                            {
+                                "code": 400,
+                                "description": "Bad Request",
+                                "result_type": "message",
+                                "result_code": "SQL Error Message"
+                            },
+                            {
+                                "code": 401,
+                                "description": "Validation",
+                                "result_type": "message",
+                                "result_code": "Validation Error Message"
+                            },
+                            {
+                                "code": 404,
+                                "description": "Not Found",
+                                "result_type": "message",
+                                "result_code": "Route Not Found"
+                            }
+                        ],
+                        "axios": {
+                            "method": "put",
+                            "url": "/add_facts/update?column={column_name}&value={value}",
+                            "hasData": true,
+                            "data": ",{ params : {'add_facts_text': 'varchar(255)','category_id': 'int(11)','add_fact_review': 'enum('true','false')','add_fact_date': 'timestamp'}}"
+                        }
+                    },
+                    {
+                        "route_name": "add_facts_delete_one",
+                        "route_url": "/add_facts/delete/{add_fact_id}",
+                        "method": "DELETE",
+                        "color": "danger",
+                        "description": "Delete one add_facts",
+                        "request": {
+                            "parameters": [{
+                                "name": "add_fact_id",
+                                "type": "integer",
+                                "parameter_type": "path",
+                                "description": "add_facts ID",
+                                "required": true
+                            }]
+                        },
+                        "response": [{
+                                "code": 200,
+                                "description": "Successful operation",
+                                "result_type": "code",
+                                "result_code": "{deleted_id: 1}"
+                            },
+                            {
+                                "code": 400,
+                                "description": "Bad Request",
+                                "result_type": "message",
+                                "result_code": "SQL Error Message"
+                            },
+                            {
+                                "code": 401,
+                                "description": "Validation",
+                                "result_type": "message",
+                                "result_code": "Validation Error Message"
+                            },
+                            {
+                                "code": 404,
+                                "description": "Not Found",
+                                "result_type": "message",
+                                "result_code": "Route Not Found"
+                            }
+                        ],
+                        "axios": {
+                            "method": "delete",
+                            "url": "/add_facts/delete/{add_fact_id}",
+                            "hasData": false,
+                            "data": ""
+                        }
+                    }, {
+                        "route_name": "add_facts_delete_list",
+                        "route_url": "/add_facts/delete",
+                        "method": "DELETE",
+                        "color": "danger",
+                        "description": "Delete multiple add_facts",
+                        "request": {
+                            "parameters": [{
+                                "name": "list",
+                                "type": "array",
+                                "parameter_type": "form",
+                                "description": "add_facts List (JSON) [1,2,3]",
+                                "required": true
+                            }]
+                        },
+                        "response": [{
+                                "code": 200,
+                                "description": "Successful operation",
+                                "result_type": "code",
+                                "result_code": "[1,2,3]"
+                            },
+                            {
+                                "code": 400,
+                                "description": "Bad Request",
+                                "result_type": "message",
+                                "result_code": "SQL Error Message"
+                            },
+                            {
+                                "code": 401,
+                                "description": "Validation",
+                                "result_type": "message",
+                                "result_code": "Validation Error Message"
+                            },
+                            {
+                                "code": 404,
+                                "description": "Not Found",
+                                "result_type": "message",
+                                "result_code": "Route Not Found"
+                            }
+                        ],
+                        "axios": {
+                            "method": "delete",
+                            "url": "/add_facts/delete",
+                            "hasData": true,
+                            "data": ",{ params : {list: [1,2,3]}}"
+                        }
+                    }
+                ]
+            },
+            {
+                "route_name": "categories",
+                "route_url": "/categories",
+                "route_key": "category_id",
+                "schema": {
+                    "type": "table",
+                    "properties": [
+                        
+                {
+                    "name": "category_id",
+                    "type": "int",
+                    "primary_key": true
+                },
+                {
+                    "name": "category_title",
+                    "type": "varchar",
+                    "primary_key": false
+                }
+                    ]
+                },
+                "routes": [{
+                        "route_name": "categories_list",
+                        "route_url": "/categories/all",
+                        "method": "GET",
+                        "color": "success",
+                        "description": "List all categories",
+                        "request": {
+                            "parameters": []
+                        },
+                        "response": [{
+                                "code": 200,
+                                "description": "Successful operation",
+                                "result_type": "code",
+                                "result_code": "{category_id: 1, 'category_title': 'varchar(255)'}"
+                            },
+                            {
+                                "code": 400,
+                                "description": "Bad Request",
+                                "result_type": "message",
+                                "result_code": "SQL Error Message"
+                            },
+                            {
+                                "code": 404,
+                                "description": "Not Found",
+                                "result_type": "message",
+                                "result_code": "Route Not Found"
+                            }
+                        ],
+                        "axios": {
+                            "method": "get",
+                            "url": "/categories/all",
+                            "hasData": false,
+                            "data": ""
+                        }
+                    }, {
+                        "route_name": "categories_detail",
+                        "route_url": "/categories/all/{category_id}",
+                        "method": "GET",
+                        "color": "success",
+                        "description": "Get categories detail",
+                        "request": {
+                            "parameters": [{
+                                "name": "category_id",
+                                "type": "integer",
+                                "parameter_type": "path",
+                                "description": "categories ID",
+                                "required": true
+                            }]
+                        },
+                        "response": [{
+                                "code": 200,
+                                "description": "Successful operation",
+                                "result_type": "code",
+                                "result_code": "{category_id: 1, 'category_title': 'varchar(255)'}"
+                            },
+                            {
+                                "code": 400,
+                                "description": "Bad Request",
+                                "result_type": "message",
+                                "result_code": "SQL Error Message"
+                            },
+                            {
+                                "code": 401,
+                                "description": "Validation",
+                                "result_type": "message",
+                                "result_code": "Validation Error Message"
+                            },
+                            {
+                                "code": 404,
+                                "description": "Not Found",
+                                "result_type": "message",
+                                "result_code": "Route Not Found"
+                            }
+                        ],
+                        "axios": {
+                            "method": "get",
+                            "url": "/categories/all/{category_id}",
+                            "hasData": false,
+                            "data": ""
+                        }
+                    },
+                    {
+                        "route_name": "categories_filter",
+                        "route_url": "/categories/filter?column={column_name}&value={value}",
+                        "method": "GET",
+                        "color": "success",
+                        "description": "Filter categories by single column",
+                        "request": {
+                            "parameters": [
+                                {
+                                    "name": "column_name",
+                                    "type": "string",
+                                    "parameter_type": "query",
+                                    "description": "Column Name",
+                                    "required": true
+                                },
+                                {
+                                    "name": "value",
+                                    "type": "string",
+                                    "parameter_type": "query",
+                                    "description": "Value",
+                                    "required": true
+                                }
+                            ]
+                        },
+                        "response": [{
+                                "code": 200,
+                                "description": "Successful operation",
+                                "result_type": "code",
+                                "result_code": "[{category_id: 1, 'category_title': 'varchar(255)'}]"
+                            },
+                            {
+                                "code": 400,
+                                "description": "Bad Request",
+                                "result_type": "message",
+                                "result_code": "SQL Error Message"
+                            },
+                            {
+                                "code": 401,
+                                "description": "Validation",
+                                "result_type": "message",
+                                "result_code": "Validation Error Message"
+                            },
+                            {
+                                "code": 404,
+                                "description": "Not Found",
+                                "result_type": "message",
+                                "result_code": "Route Not Found"
+                            }
+                        ],
+                        "axios": {
+                            "method": "get",
+                            "url": "/categories/filter?column={column_name}&value={value}",
+                            "hasData": false,
+                            "data": ""
+                        }
+                    },
+                    {
+                        "route_name": "categories_report",
+                        "route_url": "/categories/report?{column_name}={value}",
+                        "method": "GET",
+                        "color": "success",
+                        "description": "Report categories by single/multiple column using & operator",
+                        "request": {
+                            "parameters": [{
+                                "name": "column_name",
+                                "type": "string",
+                                "parameter_type": "query",
+                                "description": "Column Name",
+                                "required": false
+                            }]
+                        },
+                        "response": [{
+                                "code": 200,
+                                "description": "Successful operation",
+                                "result_type": "code",
+                                "result_code": "[{category_id: 1, 'category_title': 'varchar(255)'}]"
+                            },
+                            {
+                                "code": 400,
+                                "description": "Bad Request",
+                                "result_type": "message",
+                                "result_code": "SQL Error Message"
+                            },
+                            {
+                                "code": 401,
+                                "description": "Validation",
+                                "result_type": "message",
+                                "result_code": "Validation Error Message"
+                            },
+                            {
+                                "code": 404,
+                                "description": "Not Found",
+                                "result_type": "message",
+                                "result_code": "Route Not Found"
+                            }
+                        ],
+                        "axios": {
+                            "method": "get",
+                            "url": "/categories/report?{column_name}={value}",
+                            "hasData": false,
+                            "data": ""
+                        }
+                    },
+                    {
+                        "route_name": "categories_create_one",
+                        "route_url": "/categories/create",
+                        "method": "POST",
+                        "color": "warning",
+                        "description": "Create one categories",
+                        "request": {
+                            "parameters": [
+                                
+                {
+                    "name": "category_id",
+                    "type": "int",
+                    "parameter_type": "form",
+                    "description": "categories Name",
+                    "required": true
+                },
+                {
+                    "name": "category_title",
+                    "type": "varchar",
+                    "parameter_type": "form",
+                    "description": "categories Name",
+                    "required": true
+                }
+                            ]
+                        },
+                        "response": [{
+                                "code": 200,
+                                "description": "Successful operation",
+                                "result_type": "code",
+                                "result_code": "{category_id: 1, 'category_title': 'varchar(255)'}"
+                            },
+                            {
+                                "code": 400,
+                                "description": "Bad Request",
+                                "result_type": "message",
+                                "result_code": "SQL Error Message"
+                            },
+                            {
+                                "code": 401,
+                                "description": "Validation",
+                                "result_type": "message",
+                                "result_code": "Validation Error Message"
+                            },
+                            {
+                                "code": 404,
+                                "description": "Not Found",
+                                "result_type": "message",
+                                "result_code": "Route Not Found"
+                            }
+                        ],
+                        "axios": {
+                            "method": "post",
+                            "url": "/categories/create",
+                            "hasData": true,
+                            "data": ",{ params : {'category_title': 'varchar(255)'}}"
+                        }
+                    },
+                    {
+                        "route_name": "categories_create_list",
+                        "route_url": "/categories/create/list",
+                        "method": "POST",
+                        "color": "warning",
+                        "description": "Create multiple categories",
+                        "request": {
+                            "parameters": [{
+                                "name": "list",
+                                "type": "array",
+                                "parameter_type": "form",
+                                "description": "categories List (JSON) [{'category_title': 'varchar(255)'}]",
+                                "required": true
+                            }]
+                        },
+                        "response": [{
+                                "code": 200,
+                                "description": "Successful operation",
+                                "result_type": "code",
+                                "result_code": "[{category_id: 1, 'category_title': 'varchar(255)'},{category_id: 2, 'category_title': 'varchar(255)'}]"
+                            },
+                            {
+                                "code": 400,
+                                "description": "Bad Request",
+                                "result_type": "message",
+                                "result_code": "SQL Error Message"
+                            },
+                            {
+                                "code": 401,
+                                "description": "Validation",
+                                "result_type": "message",
+                                "result_code": "Validation Error Message"
+                            },
+                            {
+                                "code": 404,
+                                "description": "Not Found",
+                                "result_type": "message",
+                                "result_code": "Route Not Found"
+                            }
+                        ],
+                        "axios": {
+                            "method": "post",
+                            "url": "/categories/create/list",
+                            "hasData": true,
+                            "data": ",{ params : {list: [{'category_title': 'varchar(255)'},{'category_title': 'varchar(255)'}]}}"
+                        }
+                    },
+                    {
+                        "route_name": "categories_update_by_id",
+                        "route_url": "/categories/update/{category_id}",
+                        "method": "PUT",
+                        "color": "info",
+                        "description": "Update categories by category_id",
+                        "request": {
+                            "parameters": [
+                                
+                {
+                    "name": "category_id",
+                    "type": "int",
+                    "parameter_type": "form",
+                    "description": "categories Name",
+                    "required": true
+                },
+                {
+                    "name": "category_title",
+                    "type": "varchar",
+                    "parameter_type": "form",
+                    "description": "categories Name",
+                    "required": true
+                }
+                            ]
+                        },
+                        "response": [{
+                                "code": 200,
+                                "description": "Successful operation",
+                                "result_type": "code",
+                                "result_code": "{category_id: 1, 'category_title': 'varchar(255)'}"
+                            },
+                            {
+                                "code": 400,
+                                "description": "Bad Request",
+                                "result_type": "message",
+                                "result_code": "SQL Error Message"
+                            },
+                            {
+                                "code": 401,
+                                "description": "Validation",
+                                "result_type": "message",
+                                "result_code": "Validation Error Message"
+                            },
+                            {
+                                "code": 404,
+                                "description": "Not Found",
+                                "result_type": "message",
+                                "result_code": "Route Not Found"
+                            }
+                        ],
+                        "axios": {
+                            "method": "put",
+                            "url": "/categories/update/{category_id}",
+                            "hasData": true,
+                            "data": ",{ params : {'category_title': 'varchar(255)'}}"
+                        }
+                    },
+                    {
+                        "route_name": "categories_update_by_column",
+                        "route_url": "/categories/update?column={column_name}&value={value}",
+                        "method": "PUT",
+                        "color": "info",
+                        "description": "Update categories by any column ",
+                        "request": {
+                            "parameters": [
+                                
+                {
+                    "name": "category_id",
+                    "type": "int",
+                    "parameter_type": "form",
+                    "description": "categories Name",
+                    "required": true
+                },
+                {
+                    "name": "category_title",
+                    "type": "varchar",
+                    "parameter_type": "form",
+                    "description": "categories Name",
+                    "required": true
+                },
+                                {
+                                    "name": "column",
+                                    "type": "string",
+                                    "parameter_type": "query",
+                                    "description": "Column Name",
+                                    "required": true
+                                },
+                                {
+                                    "name": "value",
+                                    "type": "string",
+                                    "parameter_type": "query",
+                                    "description": "Value",
+                                    "required": true
+                                }
+                            ]
+                        },
+                        "response": [{
+                                "code": 200,
+                                "description": "Successful operation",
+                                "result_type": "code",
+                                "result_code": "{category_id: 1, 'category_title': 'varchar(255)'}"
+                            },
+                            {
+                                "code": 400,
+                                "description": "Bad Request",
+                                "result_type": "message",
+                                "result_code": "SQL Error Message"
+                            },
+                            {
+                                "code": 401,
+                                "description": "Validation",
+                                "result_type": "message",
+                                "result_code": "Validation Error Message"
+                            },
+                            {
+                                "code": 404,
+                                "description": "Not Found",
+                                "result_type": "message",
+                                "result_code": "Route Not Found"
+                            }
+                        ],
+                        "axios": {
+                            "method": "put",
+                            "url": "/categories/update?column={column_name}&value={value}",
+                            "hasData": true,
+                            "data": ",{ params : {'category_title': 'varchar(255)'}}"
+                        }
+                    },
+                    {
+                        "route_name": "categories_delete_one",
+                        "route_url": "/categories/delete/{category_id}",
+                        "method": "DELETE",
+                        "color": "danger",
+                        "description": "Delete one categories",
+                        "request": {
+                            "parameters": [{
+                                "name": "category_id",
+                                "type": "integer",
+                                "parameter_type": "path",
+                                "description": "categories ID",
+                                "required": true
+                            }]
+                        },
+                        "response": [{
+                                "code": 200,
+                                "description": "Successful operation",
+                                "result_type": "code",
+                                "result_code": "{deleted_id: 1}"
+                            },
+                            {
+                                "code": 400,
+                                "description": "Bad Request",
+                                "result_type": "message",
+                                "result_code": "SQL Error Message"
+                            },
+                            {
+                                "code": 401,
+                                "description": "Validation",
+                                "result_type": "message",
+                                "result_code": "Validation Error Message"
+                            },
+                            {
+                                "code": 404,
+                                "description": "Not Found",
+                                "result_type": "message",
+                                "result_code": "Route Not Found"
+                            }
+                        ],
+                        "axios": {
+                            "method": "delete",
+                            "url": "/categories/delete/{category_id}",
+                            "hasData": false,
+                            "data": ""
+                        }
+                    }, {
+                        "route_name": "categories_delete_list",
+                        "route_url": "/categories/delete",
+                        "method": "DELETE",
+                        "color": "danger",
+                        "description": "Delete multiple categories",
+                        "request": {
+                            "parameters": [{
+                                "name": "list",
+                                "type": "array",
+                                "parameter_type": "form",
+                                "description": "categories List (JSON) [1,2,3]",
+                                "required": true
+                            }]
+                        },
+                        "response": [{
+                                "code": 200,
+                                "description": "Successful operation",
+                                "result_type": "code",
+                                "result_code": "[1,2,3]"
+                            },
+                            {
+                                "code": 400,
+                                "description": "Bad Request",
+                                "result_type": "message",
+                                "result_code": "SQL Error Message"
+                            },
+                            {
+                                "code": 401,
+                                "description": "Validation",
+                                "result_type": "message",
+                                "result_code": "Validation Error Message"
+                            },
+                            {
+                                "code": 404,
+                                "description": "Not Found",
+                                "result_type": "message",
+                                "result_code": "Route Not Found"
+                            }
+                        ],
+                        "axios": {
+                            "method": "delete",
+                            "url": "/categories/delete",
+                            "hasData": true,
+                            "data": ",{ params : {list: [1,2,3]}}"
+                        }
+                    }
+                ]
+            },
+            {
+                "route_name": "facts",
+                "route_url": "/facts",
+                "route_key": "fact_id",
+                "schema": {
+                    "type": "table",
+                    "properties": [
+                        
+                {
+                    "name": "fact_id",
+                    "type": "int",
+                    "primary_key": true
+                },
+                {
+                    "name": "fact_text",
+                    "type": "varchar",
+                    "primary_key": false
+                },
+                {
+                    "name": "category_id",
+                    "type": "int",
+                    "primary_key": false
+                },
+                {
+                    "name": "fact_date",
+                    "type": "datetime",
+                    "primary_key": false
+                }
+                    ]
+                },
+                "routes": [{
+                        "route_name": "facts_list",
+                        "route_url": "/facts/all",
+                        "method": "GET",
+                        "color": "success",
+                        "description": "List all facts",
+                        "request": {
+                            "parameters": []
+                        },
+                        "response": [{
+                                "code": 200,
+                                "description": "Successful operation",
+                                "result_type": "code",
+                                "result_code": "{fact_id: 1, 'fact_text': 'varchar(255)','category_id': 'int(11)','fact_date': 'datetime'}"
+                            },
+                            {
+                                "code": 400,
+                                "description": "Bad Request",
+                                "result_type": "message",
+                                "result_code": "SQL Error Message"
+                            },
+                            {
+                                "code": 404,
+                                "description": "Not Found",
+                                "result_type": "message",
+                                "result_code": "Route Not Found"
+                            }
+                        ],
+                        "axios": {
+                            "method": "get",
+                            "url": "/facts/all",
+                            "hasData": false,
+                            "data": ""
+                        }
+                    }, {
+                        "route_name": "facts_detail",
+                        "route_url": "/facts/all/{fact_id}",
+                        "method": "GET",
+                        "color": "success",
+                        "description": "Get facts detail",
+                        "request": {
+                            "parameters": [{
+                                "name": "fact_id",
+                                "type": "integer",
+                                "parameter_type": "path",
+                                "description": "facts ID",
+                                "required": true
+                            }]
+                        },
+                        "response": [{
+                                "code": 200,
+                                "description": "Successful operation",
+                                "result_type": "code",
+                                "result_code": "{fact_id: 1, 'fact_text': 'varchar(255)','category_id': 'int(11)','fact_date': 'datetime'}"
+                            },
+                            {
+                                "code": 400,
+                                "description": "Bad Request",
+                                "result_type": "message",
+                                "result_code": "SQL Error Message"
+                            },
+                            {
+                                "code": 401,
+                                "description": "Validation",
+                                "result_type": "message",
+                                "result_code": "Validation Error Message"
+                            },
+                            {
+                                "code": 404,
+                                "description": "Not Found",
+                                "result_type": "message",
+                                "result_code": "Route Not Found"
+                            }
+                        ],
+                        "axios": {
+                            "method": "get",
+                            "url": "/facts/all/{fact_id}",
+                            "hasData": false,
+                            "data": ""
+                        }
+                    },
+                    {
+                        "route_name": "facts_filter",
+                        "route_url": "/facts/filter?column={column_name}&value={value}",
+                        "method": "GET",
+                        "color": "success",
+                        "description": "Filter facts by single column",
+                        "request": {
+                            "parameters": [
+                                {
+                                    "name": "column_name",
+                                    "type": "string",
+                                    "parameter_type": "query",
+                                    "description": "Column Name",
+                                    "required": true
+                                },
+                                {
+                                    "name": "value",
+                                    "type": "string",
+                                    "parameter_type": "query",
+                                    "description": "Value",
+                                    "required": true
+                                }
+                            ]
+                        },
+                        "response": [{
+                                "code": 200,
+                                "description": "Successful operation",
+                                "result_type": "code",
+                                "result_code": "[{fact_id: 1, 'fact_text': 'varchar(255)','category_id': 'int(11)','fact_date': 'datetime'}]"
+                            },
+                            {
+                                "code": 400,
+                                "description": "Bad Request",
+                                "result_type": "message",
+                                "result_code": "SQL Error Message"
+                            },
+                            {
+                                "code": 401,
+                                "description": "Validation",
+                                "result_type": "message",
+                                "result_code": "Validation Error Message"
+                            },
+                            {
+                                "code": 404,
+                                "description": "Not Found",
+                                "result_type": "message",
+                                "result_code": "Route Not Found"
+                            }
+                        ],
+                        "axios": {
+                            "method": "get",
+                            "url": "/facts/filter?column={column_name}&value={value}",
+                            "hasData": false,
+                            "data": ""
+                        }
+                    },
+                    {
+                        "route_name": "facts_report",
+                        "route_url": "/facts/report?{column_name}={value}",
+                        "method": "GET",
+                        "color": "success",
+                        "description": "Report facts by single/multiple column using & operator",
+                        "request": {
+                            "parameters": [{
+                                "name": "column_name",
+                                "type": "string",
+                                "parameter_type": "query",
+                                "description": "Column Name",
+                                "required": false
+                            }]
+                        },
+                        "response": [{
+                                "code": 200,
+                                "description": "Successful operation",
+                                "result_type": "code",
+                                "result_code": "[{fact_id: 1, 'fact_text': 'varchar(255)','category_id': 'int(11)','fact_date': 'datetime'}]"
+                            },
+                            {
+                                "code": 400,
+                                "description": "Bad Request",
+                                "result_type": "message",
+                                "result_code": "SQL Error Message"
+                            },
+                            {
+                                "code": 401,
+                                "description": "Validation",
+                                "result_type": "message",
+                                "result_code": "Validation Error Message"
+                            },
+                            {
+                                "code": 404,
+                                "description": "Not Found",
+                                "result_type": "message",
+                                "result_code": "Route Not Found"
+                            }
+                        ],
+                        "axios": {
+                            "method": "get",
+                            "url": "/facts/report?{column_name}={value}",
+                            "hasData": false,
+                            "data": ""
+                        }
+                    },
+                    {
+                        "route_name": "facts_create_one",
+                        "route_url": "/facts/create",
+                        "method": "POST",
+                        "color": "warning",
+                        "description": "Create one facts",
+                        "request": {
+                            "parameters": [
+                                
+                {
+                    "name": "fact_id",
+                    "type": "int",
+                    "parameter_type": "form",
+                    "description": "facts Name",
+                    "required": true
+                },
+                {
+                    "name": "fact_text",
+                    "type": "varchar",
+                    "parameter_type": "form",
+                    "description": "facts Name",
+                    "required": true
+                },
+                {
+                    "name": "category_id",
+                    "type": "int",
+                    "parameter_type": "form",
+                    "description": "facts Name",
+                    "required": true
+                },
+                {
+                    "name": "fact_date",
+                    "type": "datetime",
+                    "parameter_type": "form",
+                    "description": "facts Name",
+                    "required": true
+                }
+                            ]
+                        },
+                        "response": [{
+                                "code": 200,
+                                "description": "Successful operation",
+                                "result_type": "code",
+                                "result_code": "{fact_id: 1, 'fact_text': 'varchar(255)','category_id': 'int(11)','fact_date': 'datetime'}"
+                            },
+                            {
+                                "code": 400,
+                                "description": "Bad Request",
+                                "result_type": "message",
+                                "result_code": "SQL Error Message"
+                            },
+                            {
+                                "code": 401,
+                                "description": "Validation",
+                                "result_type": "message",
+                                "result_code": "Validation Error Message"
+                            },
+                            {
+                                "code": 404,
+                                "description": "Not Found",
+                                "result_type": "message",
+                                "result_code": "Route Not Found"
+                            }
+                        ],
+                        "axios": {
+                            "method": "post",
+                            "url": "/facts/create",
+                            "hasData": true,
+                            "data": ",{ params : {'fact_text': 'varchar(255)','category_id': 'int(11)','fact_date': 'datetime'}}"
+                        }
+                    },
+                    {
+                        "route_name": "facts_create_list",
+                        "route_url": "/facts/create/list",
+                        "method": "POST",
+                        "color": "warning",
+                        "description": "Create multiple facts",
+                        "request": {
+                            "parameters": [{
+                                "name": "list",
+                                "type": "array",
+                                "parameter_type": "form",
+                                "description": "facts List (JSON) [{'fact_text': 'varchar(255)','category_id': 'int(11)','fact_date': 'datetime'}]",
+                                "required": true
+                            }]
+                        },
+                        "response": [{
+                                "code": 200,
+                                "description": "Successful operation",
+                                "result_type": "code",
+                                "result_code": "[{fact_id: 1, 'fact_text': 'varchar(255)','category_id': 'int(11)','fact_date': 'datetime'},{fact_id: 2, 'fact_text': 'varchar(255)','category_id': 'int(11)','fact_date': 'datetime'}]"
+                            },
+                            {
+                                "code": 400,
+                                "description": "Bad Request",
+                                "result_type": "message",
+                                "result_code": "SQL Error Message"
+                            },
+                            {
+                                "code": 401,
+                                "description": "Validation",
+                                "result_type": "message",
+                                "result_code": "Validation Error Message"
+                            },
+                            {
+                                "code": 404,
+                                "description": "Not Found",
+                                "result_type": "message",
+                                "result_code": "Route Not Found"
+                            }
+                        ],
+                        "axios": {
+                            "method": "post",
+                            "url": "/facts/create/list",
+                            "hasData": true,
+                            "data": ",{ params : {list: [{'fact_text': 'varchar(255)','category_id': 'int(11)','fact_date': 'datetime'},{'fact_text': 'varchar(255)','category_id': 'int(11)','fact_date': 'datetime'}]}}"
+                        }
+                    },
+                    {
+                        "route_name": "facts_update_by_id",
+                        "route_url": "/facts/update/{fact_id}",
+                        "method": "PUT",
+                        "color": "info",
+                        "description": "Update facts by fact_id",
+                        "request": {
+                            "parameters": [
+                                
+                {
+                    "name": "fact_id",
+                    "type": "int",
+                    "parameter_type": "form",
+                    "description": "facts Name",
+                    "required": true
+                },
+                {
+                    "name": "fact_text",
+                    "type": "varchar",
+                    "parameter_type": "form",
+                    "description": "facts Name",
+                    "required": true
+                },
+                {
+                    "name": "category_id",
+                    "type": "int",
+                    "parameter_type": "form",
+                    "description": "facts Name",
+                    "required": true
+                },
+                {
+                    "name": "fact_date",
+                    "type": "datetime",
+                    "parameter_type": "form",
+                    "description": "facts Name",
+                    "required": true
+                }
+                            ]
+                        },
+                        "response": [{
+                                "code": 200,
+                                "description": "Successful operation",
+                                "result_type": "code",
+                                "result_code": "{fact_id: 1, 'fact_text': 'varchar(255)','category_id': 'int(11)','fact_date': 'datetime'}"
+                            },
+                            {
+                                "code": 400,
+                                "description": "Bad Request",
+                                "result_type": "message",
+                                "result_code": "SQL Error Message"
+                            },
+                            {
+                                "code": 401,
+                                "description": "Validation",
+                                "result_type": "message",
+                                "result_code": "Validation Error Message"
+                            },
+                            {
+                                "code": 404,
+                                "description": "Not Found",
+                                "result_type": "message",
+                                "result_code": "Route Not Found"
+                            }
+                        ],
+                        "axios": {
+                            "method": "put",
+                            "url": "/facts/update/{fact_id}",
+                            "hasData": true,
+                            "data": ",{ params : {'fact_text': 'varchar(255)','category_id': 'int(11)','fact_date': 'datetime'}}"
+                        }
+                    },
+                    {
+                        "route_name": "facts_update_by_column",
+                        "route_url": "/facts/update?column={column_name}&value={value}",
+                        "method": "PUT",
+                        "color": "info",
+                        "description": "Update facts by any column ",
+                        "request": {
+                            "parameters": [
+                                
+                {
+                    "name": "fact_id",
+                    "type": "int",
+                    "parameter_type": "form",
+                    "description": "facts Name",
+                    "required": true
+                },
+                {
+                    "name": "fact_text",
+                    "type": "varchar",
+                    "parameter_type": "form",
+                    "description": "facts Name",
+                    "required": true
+                },
+                {
+                    "name": "category_id",
+                    "type": "int",
+                    "parameter_type": "form",
+                    "description": "facts Name",
+                    "required": true
+                },
+                {
+                    "name": "fact_date",
+                    "type": "datetime",
+                    "parameter_type": "form",
+                    "description": "facts Name",
+                    "required": true
+                },
+                                {
+                                    "name": "column",
+                                    "type": "string",
+                                    "parameter_type": "query",
+                                    "description": "Column Name",
+                                    "required": true
+                                },
+                                {
+                                    "name": "value",
+                                    "type": "string",
+                                    "parameter_type": "query",
+                                    "description": "Value",
+                                    "required": true
+                                }
+                            ]
+                        },
+                        "response": [{
+                                "code": 200,
+                                "description": "Successful operation",
+                                "result_type": "code",
+                                "result_code": "{fact_id: 1, 'fact_text': 'varchar(255)','category_id': 'int(11)','fact_date': 'datetime'}"
+                            },
+                            {
+                                "code": 400,
+                                "description": "Bad Request",
+                                "result_type": "message",
+                                "result_code": "SQL Error Message"
+                            },
+                            {
+                                "code": 401,
+                                "description": "Validation",
+                                "result_type": "message",
+                                "result_code": "Validation Error Message"
+                            },
+                            {
+                                "code": 404,
+                                "description": "Not Found",
+                                "result_type": "message",
+                                "result_code": "Route Not Found"
+                            }
+                        ],
+                        "axios": {
+                            "method": "put",
+                            "url": "/facts/update?column={column_name}&value={value}",
+                            "hasData": true,
+                            "data": ",{ params : {'fact_text': 'varchar(255)','category_id': 'int(11)','fact_date': 'datetime'}}"
+                        }
+                    },
+                    {
+                        "route_name": "facts_delete_one",
+                        "route_url": "/facts/delete/{fact_id}",
+                        "method": "DELETE",
+                        "color": "danger",
+                        "description": "Delete one facts",
+                        "request": {
+                            "parameters": [{
+                                "name": "fact_id",
+                                "type": "integer",
+                                "parameter_type": "path",
+                                "description": "facts ID",
+                                "required": true
+                            }]
+                        },
+                        "response": [{
+                                "code": 200,
+                                "description": "Successful operation",
+                                "result_type": "code",
+                                "result_code": "{deleted_id: 1}"
+                            },
+                            {
+                                "code": 400,
+                                "description": "Bad Request",
+                                "result_type": "message",
+                                "result_code": "SQL Error Message"
+                            },
+                            {
+                                "code": 401,
+                                "description": "Validation",
+                                "result_type": "message",
+                                "result_code": "Validation Error Message"
+                            },
+                            {
+                                "code": 404,
+                                "description": "Not Found",
+                                "result_type": "message",
+                                "result_code": "Route Not Found"
+                            }
+                        ],
+                        "axios": {
+                            "method": "delete",
+                            "url": "/facts/delete/{fact_id}",
+                            "hasData": false,
+                            "data": ""
+                        }
+                    }, {
+                        "route_name": "facts_delete_list",
+                        "route_url": "/facts/delete",
+                        "method": "DELETE",
+                        "color": "danger",
+                        "description": "Delete multiple facts",
+                        "request": {
+                            "parameters": [{
+                                "name": "list",
+                                "type": "array",
+                                "parameter_type": "form",
+                                "description": "facts List (JSON) [1,2,3]",
+                                "required": true
+                            }]
+                        },
+                        "response": [{
+                                "code": 200,
+                                "description": "Successful operation",
+                                "result_type": "code",
+                                "result_code": "[1,2,3]"
+                            },
+                            {
+                                "code": 400,
+                                "description": "Bad Request",
+                                "result_type": "message",
+                                "result_code": "SQL Error Message"
+                            },
+                            {
+                                "code": 401,
+                                "description": "Validation",
+                                "result_type": "message",
+                                "result_code": "Validation Error Message"
+                            },
+                            {
+                                "code": 404,
+                                "description": "Not Found",
+                                "result_type": "message",
+                                "result_code": "Route Not Found"
+                            }
+                        ],
+                        "axios": {
+                            "method": "delete",
+                            "url": "/facts/delete",
+                            "hasData": true,
+                            "data": ",{ params : {list: [1,2,3]}}"
+                        }
+                    }
+                ]
+            }]
