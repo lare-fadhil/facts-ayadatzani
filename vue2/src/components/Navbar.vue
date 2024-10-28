@@ -1,14 +1,12 @@
 
 <template>
 	<div>
-		<v-app-bar app class="elevation-0">
-			<v-app-bar-nav-icon color="primary" @click="drawer = !drawer"></v-app-bar-nav-icon>
-			<v-btn icon="" to="/" color="primary">
-				<v-icon>mdi-home</v-icon>
-			</v-btn>
-			<v-app-bar-title>{{$store.getters.language.app_name}}</v-app-bar-title>
-            <v-spacer></v-spacer>
-            <v-menu offset-y>
+		<!-- <v-app-bar app class="elevation-0" color="transparent"> -->
+			<!-- <v-btn icon="" to="/" color="primary"> -->
+				<!-- <v-icon>mdi-home</v-icon> -->
+			<!-- </v-btn> -->
+			<v-spacer></v-spacer>
+			<!-- <v-menu offset-y>
                 <template v-slot:activator="{ on }">
                     <v-btn icon v-on="on">
                         <v-icon>mdi-dots-vertical</v-icon>
@@ -19,10 +17,38 @@
                         <v-list-item-title>{{item.name}}</v-list-item-title>
                     </v-list-item>
                 </v-list>
-            </v-menu>
 
-		</v-app-bar>
-		<v-navigation-drawer v-model="drawer" app :right="$store.getters.language.rtl">
+            </v-menu> -->
+			<!-- btn to make dialog true -->
+			<v-btn icon @click="dialog = true">
+				<v-icon>mdi-plus</v-icon>
+			</v-btn>
+		<!-- </v-app-bar> -->
+		<v-dialog v-model="dialog" fullscreen hide-overlay transition="dialog-bottom-transition">
+			<v-card style="    align-content: center;">
+				<v-card-title style="justify-content: right;" class="mb-8">
+					<h1 class="text-right">
+						جۆرەکان
+					</h1>
+				</v-card-title>
+				<v-card-text>
+					<!-- the categories in nice btns -->
+					<v-btn v-for="(item , index) in categories" :key="index" :to="'/categories-list/'+item.id" :color="item.color" class="my-4" width="100%" @click="dialog= false" xl>
+						<h1 style="color: aliceblue;">
+							{{item.name}}
+						</h1>
+					</v-btn>
+				</v-card-text>
+				<v-card-actions>
+					<v-spacer></v-spacer>
+					<v-btn color="blue darken-1" text @click="dialog = false">
+						گەڕانەوە
+					</v-btn>
+
+				</v-card-actions>
+			</v-card>
+		</v-dialog>
+		<!-- <v-navigation-drawer v-model="drawer" app :right="$store.getters.language.rtl">
 			<template v-slot:prepend>
 				<v-list-item>
 					<v-list-item-content>
@@ -38,7 +64,7 @@
 					</v-list-item-content>
 				</v-list-item>
 			</v-list>
-		</v-navigation-drawer>
+		</v-navigation-drawer> -->
 	</div>
 </template>
 <script>
@@ -46,13 +72,14 @@
 		data: function () {
 			return {
 				drawer: null,
+				dialog: false,
 				categories: [
-					{id: 1,name: 'گشتی'},
-					{id: 2,name: 'تەندروستی'},
-					{id: 3,name: 'ئاژەڵەکان'},
-					{id: 4,name: 'وەرزشی'},
-					{id: 5,name: 'مێژوو'},
-					{id: 6,name: 'خواردنەکان'}
+					{ id: 1, name: 'گشتی', color: '#00659d' },
+					{ id: 2, name: 'تەندروستی', color: '#00abbc' },
+					{ id: 3, name: 'ئاژەڵەکان', color: '#e2c58a' },
+					// {id: 4,name: 'وەرزشی' ,color: '#fc8890'},
+					{ id: 5, name: 'مێژوو', color: '#b35d7f' },
+					{ id: 6, name: 'خواردنەکان', color: '#fc8890' },
 
 
 

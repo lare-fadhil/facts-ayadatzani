@@ -1,56 +1,200 @@
+<template style="    align-content: center; ">
+	<v-container>
+		<div v-if="cards.length > 0" style="    align-content: center;">
+			<v-layout row wrap>
+				 <v-flex xs12 md12 l12 lg12 xl12>
+					<vue-card-stack :cards="cards" :stack-width="360" :card-width="280" class="stack">
+						<template v-slot:nav="{  onNext, onPrevious }">
+							<nav class="nav">
+								<button v-on:click="onPrevious" class="button">
+									<span>
+										<v-icon>mdi-chevron-left</v-icon>
+									</span>
+								</button>
+								<button v-on:click="onNext" class="button">
+									<span>
+										<v-icon>mdi-chevron-right</v-icon>
+									</span>
+								</button>
+							</nav>
+						</template>
+						<template v-slot:card="{ card }">
+							<div style="width: 100%; height: 100%; display: flex; justify-content: center; align-items: center; border-radius: 8px" :style="{ backgroundColor: card.background }">
 
-<template>
-	<div class="my-2">
+								<div style="padding: 16px; text-align: center;">
 
-		<div v-if="cards.length > 0">
+									<p style="font-size: 24px; font-weight: bold; margin: 0; color: aliceblue;">{{ card.fact_text }}</p>
+									<v-divider class="my-3"></v-divider>
+									<v-icon color="white" size="50">{{ card.mdicon }}</v-icon>
 
-			<vue-card-stack :cards="cards" :stack-width="360" :card-width="280">
-				<template v-slot:nav="{  onNext, onPrevious }">
-					<nav class="nav">
-						<!-- <div class="counter">{{activeCardIndex + 1}}/{{cards.length}}</div> -->
-						<button v-on:click="onPrevious" class="button">
-							<span>
-								<v-icon>mdi-chevron-left</v-icon>
-							</span>
-						</button>
-						<button v-on:click="onNext" class="button">
-							<span>
-								<v-icon>mdi-chevron-right</v-icon>
-							</span>
-						</button>
-					</nav>
-				</template>
-				<template v-slot:card="{ card }">
-					<div style="width: 100%; height: 100%; display: flex; justify-content: center; align-items: center; border-radius: 8px" :style="{ backgroundColor: card.background }">
-						<!-- bulb -->
+								</div>
+							</div>
+						</template>
 
-						<div style="padding: 16px; text-align: center;">
+					</vue-card-stack>
 
-							<p style="font-size: 24px; font-weight: bold; margin: 0; color: aliceblue;">{{ card.fact_text }}</p>
-							<v-divider class="my-3"></v-divider>
-							<v-icon color="white" size="50">{{ card.mdicon }}</v-icon>
-							<!-- <v-icon color="white" size="50">mdi-food-fork-drink</v-icon> -->
-                            
-						</div>
+				</v-flex>
+				<v-flex xs12 md12 l12 lg12 xl12 class="mb-10">
+					<div id="chart">
+						<apexchart type="bar" height="140" :options="chartOptions" :series="series"></apexchart>
 					</div>
-				</template>
+					<div style="position: relative; display: none;">
+						<!-- Full progress bar (100%) -->
+						<template>
+							<div style="max-width: 400px; margin: auto; text-align: center;">
+								<h2>Survey Results</h2>
+								<div v-if="showDiv">
+									<div style="position: relative;">
+										<div style="display: flex; align-items: center; height: 30px; background-color: #444; border-radius: 5px; overflow: hidden;">
+											<div id="yes-bar" :style="{ width: displayedYesPercentage + '%', backgroundColor: '#4caf50', height: '100%',  }"></div>
+											<div id="no-bar" :style="{ width: displayedNoPercentage + '%', backgroundColor: '#f44336', height: '100%',  }"></div>
+										</div>
+										<div style="display: flex; justify-content: space-between; margin-top: 5px;">
+											<span>{{ displayedYesPercentage }}% Yes</span>
+											<span>{{ displayedNoPercentage }}% No</span>
+										</div>
+									</div>
+								</div>
+							</div>
+						</template>
+					</div>
+				</v-flex>
 
-			</vue-card-stack>
+				<v-flex xs6 md6 l6 lg6 xl6 class="text-center">
+					<!-- two btns i knew i didnt know  -->
+					<v-btn color="success">
+						<v-icon>mdi-check</v-icon>
+						<span>دەمزانی</span>
+					</v-btn>
+				</v-flex>
+				<v-flex xs6 md6 l6 lg6 xl6 class="text-center">
+					<v-btn color="error">
+						<v-icon>mdi-close</v-icon>
+						<span>نەمدەزانی</span>
+					</v-btn>
+				</v-flex>
+
+			</v-layout>
 		</div>
+	</v-container>
 
-	</div>
 </template>
 <script>
 	import requests from './../requests/facts.request.js'
 	import VueCardStack from "vue-card-stack";
+	import apexchart from "vue-apexcharts";
 
 
 	export default {
 		components: {
 			VueCardStack,
+			apexchart
 		},
 		data() {
 			return {
+
+				series: [{
+					name: 'Males',
+					data: [0.4]
+				},
+				{
+					name: 'Females',
+					data: [-0.8]
+				}
+				],
+				chartOptions: {
+					chart: {
+						type: 'bar',
+						stacked: true,
+						toolbar: {
+							show: false
+						},
+					},
+					colors: ['#4caf50', '#FF4560'],
+					plotOptions: {
+						bar: {
+							borderRadius: 5,
+							borderRadiusWhenStacked: 'all',
+							horizontal: true,
+						},
+					},
+					dataLabels: {
+						enabled: true
+					},
+					stroke: {
+						width: 1,
+						colors: ["#fff"]
+					},
+					grid: {
+						xaxis: {
+							lines: {
+								show: false // Hides the x-axis grid lines
+							}
+						},
+						yaxis: {
+							lines: {
+								show: false // Hides the y-axis grid lines
+							}
+						}
+					},
+					yaxis: {
+						stepSize: 1,
+						labels: {
+							show: false // Hides y-axis labels
+						}
+					},
+					tooltip: {
+						shared: false,
+						x: {
+							formatter: function (val) {
+								return val;
+							}
+						},
+						y: {
+							formatter: function (val) {
+								return Math.abs(val) + "%";
+							}
+						}
+					},
+					title: {
+						text: 'Mauritius population pyramid 2011'
+					},
+					xaxis: {
+						title: {
+							text: '', // No title for x-axis
+						},
+						labels: {
+							show: false // Completely hides x-axis labels
+						},
+						lines: {
+							show: false // Hides x-axis line
+						},
+						tooltip: {
+							enabled: false // Disables tooltip for x-axis
+						},
+						crosshairs: {
+							show: false // Hides crosshairs if any
+						},
+						axisBorder: {
+							show: false // Hides the x-axis border
+						},
+                        axisTicks: {
+                            show: false // Hides the x-axis ticks
+                        },
+					},
+
+				},
+
+
+
+
+
+
+				showDiv: false, // initially hidden
+				yesPercentage: 0,
+				noPercentage: 0,
+				displayedYesPercentage: 0,
+				displayedNoPercentage: 0,
 				cards: [
 					// { background: "#00659d" },
 					// { background: "#00abbc" },
@@ -107,7 +251,23 @@
 			}
 		},
 		mounted() {
-			this.readFacts();
+			this.readFacts()
+			this.showDiv = true; // Show div when component mounts
+			const targetYes = 75; // Example target percentage for Yes
+			const targetNo = 25; // Example target percentage for No
+
+			const interval = setInterval(() => {
+				if (this.displayedYesPercentage < targetYes) {
+					this.displayedYesPercentage++;
+				}
+				if (this.displayedNoPercentage < targetNo) {
+					this.displayedNoPercentage++;
+				}
+				// Clear interval when both targets are reached
+				if (this.displayedYesPercentage >= targetYes && this.displayedNoPercentage >= targetNo) {
+					clearInterval(interval);
+				}
+			}, 40); // Adjust the interval timing as needed
 		},
 		methods: {
 
@@ -167,9 +327,55 @@
 		},
 	}
 </script>
-            <style>
-	body,
-	html {
-		overflow: hidden;
+            <style >
+	/* body,
+										html {
+											overflow: hidden;
+										} */
+	.nav {
+		/* position: fixed; */
+		top: auto;
+		/* width: 100%; */
+		/* z-index: 0; Adjust if necessary to ensure it stays on top */
+		background-color: #ffffff; /* Optional: Set a background to prevent cards from showing through */
+		display: flex;
+		justify-content: space-between;
+		padding: 10px;
+	}
+
+	/* stack */
+	.stack {
+		position: fixed;
+		/* top: auto; */
+		width: 100%;
+		z-index: 0; /* Adjust if necessary to ensure it stays on top */
+		/* display: flex; */
+		justify-content: space-between;
+		padding: 10px;
+	}
+	.fade-in {
+		animation: fadeIn 0.5s ease-in-out;
+	}
+
+	@keyframes fadeIn {
+		from {
+			opacity: 0;
+			transform: translateY(
+				-10px
+			); /* Optional: add a slight upward movement */
+		}
+		to {
+			opacity: 1;
+			transform: translateY(0);
+		}
+	}
+	#yes-bar {
+		background-color: #4caf50; /* Green for Yes */
+		height: 100%;
+	}
+
+	#no-bar {
+		background-color: #f44336; /* Red for No */
+		height: 100%;
 	}
 </style>

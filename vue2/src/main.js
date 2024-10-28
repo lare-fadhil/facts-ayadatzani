@@ -9,8 +9,9 @@ import './assets/main.css'
 
 Vue.config.productionTip = false
 import axios from 'axios'
-let api = 'http://localhost:4000/'
+// let api = 'http://localhost:4000/'
 // let api = 'http://192.168.0.125:4000'
+let api = 'https://datzani.arraymaps.com/'
 axios.defaults.baseURL = api;
 axios.defaults.headers.post['Content-Type'] = 'application/json';
 

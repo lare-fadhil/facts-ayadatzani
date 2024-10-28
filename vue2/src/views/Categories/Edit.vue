@@ -56,7 +56,7 @@
                 this.getOneCategories()
             }
         },
-        
+
 		methods: {
 			getOneCategories() {
 				this.loading = true
@@ -88,4 +88,9 @@
 		},
 	}
 </script>
-                    
+                               <style>
+	body,
+	html {
+		overflow: visible;
+	}
+</style>
