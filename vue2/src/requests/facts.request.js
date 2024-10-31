@@ -5,6 +5,9 @@ export default {
     async createFacts(params)  {
         return await axios.post(`facts/create` , params)
     },
+    async createKnowFacts(params)  {
+        return await axios.post(`facts/know` , params)
+    },
     async createFactsList(params)  {
         return await axios.post(`facts/create/list` , params)
     },

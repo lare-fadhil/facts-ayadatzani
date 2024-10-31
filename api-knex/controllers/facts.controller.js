@@ -70,6 +70,18 @@ class FactsController {
             }
         }
     }
+    createknowOne = () => {
+        return (req, res, next) => {
+            const data = req.body
+          
+                Facts.createknowOne(data).then(data => {
+                    res.status(200).json({new_data : data})
+                }).catch(err => {
+                    res.status(400).json(err)
+                })
+            
+        }
+    }
     updateByID = () => {
         return (req, res, next) => {
             const id = req.params.id

@@ -4,9 +4,9 @@ const table_name = 'facts'
 class Facts {
     async getAll() {
         let data = {}
-        data.facts = await db.select("*").table('facts_view').orderByRaw('RAND()');
+        data.facts = await db.select("*").table('fact_status_counts').orderByRaw('RAND()');
 
-        
+
         data.categories = await db.select("*").table('categories')
 
         return data
@@ -14,38 +14,38 @@ class Facts {
     async report(columns) {
         let data = {}
         let query = "";
-                
+
         if (columns.fact_text) {
             query += ` AND fact_text = '${columns.fact_text}'`
         }
-            
+
         if (columns.category_id) {
             query += ` AND category_id = '${columns.category_id}'`
         }
-            
+
         if (columns.fact_date) {
             query += ` AND fact_date = '${columns.fact_date}'`
         }
-            
+
         data.facts = await db.raw(`SELECT * FROM ${table_name} WHERE 1=1 ${query}`).then(data => {
             return data[0]
         })
-        
-    data.categories = await db.select("*").table('categories')
+
+        data.categories = await db.select("*").table('categories')
         return data
     }
     async getById(id) {
         let data = {}
-        data.facts =  await db.select("*").table(table_name).where('fact_id', id).first()
-        
-    data.categories = await db.select("*").table('categories')
+        data.facts = await db.select("*").table(table_name).where('fact_id', id).first()
+
+        data.categories = await db.select("*").table('categories')
         return data
     }
     async getByColumn(column, value) {
         let data = {}
         data.facts = await db.select("*").table(table_name).where(column, value)
-         
-    data.categories = await db.select("*").table('categories')
+
+        data.categories = await db.select("*").table('categories')
         return data
     }
     async createList(data) {
@@ -60,6 +60,14 @@ class Facts {
             })
         return insertedData[0]
     }
+    async createknowOne(data) {
+        const insert = await db('know_facts').insert(data)
+        // get know_facts by know_fact_status 
+        const groups_sum = await db('know_facts').select('know_fact_status').groupBy('know_fact_status').count('know_fact_status as count').where('fact_id', data.fact_id)
+        return groups_sum
+        // return insertedData[0]
+    }
+
     async updateByID(data, id) {
         const update = await db(table_name)
             .where('fact_id', id)
@@ -67,8 +75,8 @@ class Facts {
                 return await db.select("*").table(table_name).where('fact_id', id)
             })
 
-            return update[0] ? update[0] : null
-            
+        return update[0] ? update[0] : null
+
     }
     async deleteByID(id) {
         const deletedData = await db(table_name).where('fact_id', id).del().then(data => {
@@ -78,9 +86,9 @@ class Facts {
     }
     async updateByColumn(data, column, value) {
         const updatedData = await db(table_name).where(column, value).update(data)
-        .then(async (_) => {
-            return await db.select("*").table(table_name).where(column, value)
-        })
+            .then(async (_) => {
+                return await db.select("*").table(table_name).where(column, value)
+            })
         return updatedData
     }
     async deleteList(list) {
@@ -91,4 +99,3 @@ class Facts {
     }
 }
 module.exports = new Facts()
-        

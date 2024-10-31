@@ -15,7 +15,7 @@ export default new Vuex.Store({
         categories_list: [],
         
         facts_list: [],
-        
+        local_answers: [],
     },
     getters: {
         language: state => state.language,
@@ -26,7 +26,7 @@ export default new Vuex.Store({
         categories_list: state => state.categories_list,
         
         facts_list: state => state.facts_list,
-        
+        local_answers: state => state.local_answers
     },
     mutations: {
         setLanguage(state, language) {
@@ -44,10 +44,13 @@ export default new Vuex.Store({
         setFactsList(state, facts_list) {
             state.facts_list = facts_list
         },
+        setLocalAnswers(state, local_answers) {
+            state.local_answers = local_answers
+        },
         
     },
     actions: {
-        
+       
     },
 })
         
