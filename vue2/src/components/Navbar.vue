@@ -1,10 +1,13 @@
 
 <template>
 	<div>
-		<!-- <v-app-bar app class="elevation-0" color="transparent"> -->
-			<!-- <v-btn icon="" to="/" color="primary"> -->
-				<!-- <v-icon>mdi-home</v-icon> -->
-			<!-- </v-btn> -->
+		<v-app-bar  class="elevation-0" color="transparent">
+			<v-btn icon="" to="/" >
+				<!-- home question -->
+                 <v-icon>
+                    mdi-home-analytics
+                 </v-icon>
+			</v-btn>
 			<v-spacer></v-spacer>
 			<!-- <v-menu offset-y>
                 <template v-slot:activator="{ on }">
@@ -21,9 +24,11 @@
             </v-menu> -->
 			<!-- btn to make dialog true -->
 			<v-btn icon @click="dialog = true">
-				<v-icon>mdi-plus</v-icon>
+				<v-icon>
+                    mdi-dots-vertical
+                </v-icon>
 			</v-btn>
-		<!-- </v-app-bar> -->
+		</v-app-bar>
 		<v-dialog v-model="dialog" fullscreen hide-overlay transition="dialog-bottom-transition">
 			<v-card style="    align-content: center;">
 				<v-card-title style="justify-content: right;" class="mb-8">
